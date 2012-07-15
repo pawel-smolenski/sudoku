@@ -60,8 +60,27 @@ a img {
 /* line 4, sass/style.scss */
 .board {
   margin: 0 auto;
+  border-collapse: collapse;
 }
-/* line 7, sass/style.scss */
+/* line 13, sass/style.scss */
+.board .col:nth-child(3n) .field {
+  border-bottom-color: red;
+}
+/* line 21, sass/style.scss */
+.board .col:first-child .field {
+  border-top-color: red;
+}
+/* line 29, sass/style.scss */
 .board .field {
-  border: 1px solid black;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+}
+/* line 36, sass/style.scss */
+.board .field:first-child {
+  border-left-color: red;
+}
+/* line 41, sass/style.scss */
+.board .field:nth-child(3n) {
+  border-right-color: red;
 }

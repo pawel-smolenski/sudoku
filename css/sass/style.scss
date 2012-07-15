@@ -3,8 +3,43 @@
 .board
 {
   margin: 0 auto;
+  border-collapse: collapse;
+  
+  .col
+  {
+    &:nth-child(3n)
+    {
+      .field
+      {
+      border-bottom-color: red;   
+      }
+    }
+
+    &:first-child
+    {
+      .field
+      {
+        border-top-color: red;   
+      }
+    }
+  }
+  
+  
   .field
   {
-    border: 1px solid black ;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    
+    
+    &:first-child
+    {
+      border-left-color: red;
+    }
+    
+    &:nth-child(3n)
+    {
+      border-right-color: red
+    }
   }  
 }
