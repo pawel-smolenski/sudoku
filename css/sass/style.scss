@@ -1,0 +1,10 @@
+@import "blueprint/reset";
+
+.board
+{
+  margin: 0 auto;
+  .field
+  {
+    border: 1px solid black ;
+  }  
+}
