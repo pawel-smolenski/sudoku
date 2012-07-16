@@ -58,23 +58,27 @@ Board = function() {
 			return this.attached === true;
 		}
 		
+		this.resize = function(fieldSize){
+			$(this.numberPicker).find('.field').css({'width' : fieldSize, 'height' : fieldSize});
+		}
+		
 		this.prepare();
 	}
 	
+	this.board = null;
 	this.numberPicker = new NumberPicker();
 	
 	this.prepareBoard = function()
 	{
 		this.build();
 		this.resize();
-		
-		this.numberPicker.attach('body');
+		this.registerEventListeners();
 		
 	}
 	
 	this.build = function(){
-		board = document.createElement('table');
-		board.className = 'board';
+		this.board = document.createElement('table');
+		this.board.className = 'board';
 		tbody = document.createElement('tbody');
 		
 		for(rowNum = 0; rowNum < 9; rowNum++)
@@ -92,8 +96,8 @@ Board = function() {
 			
 			tbody.appendChild(col);
 		}
-		board.appendChild(tbody);
-		$('body').append(board);
+		this.board.appendChild(tbody);
+		$('body').append(this.board);
 	}
 	
 	this.resize = function()
@@ -101,7 +105,17 @@ Board = function() {
 		size = document.width > document.height ? document.height : document.width;
 		fieldSize = size*0.8/9;
 		$('.board .field').css({'width' : fieldSize, 'height' : fieldSize});
-		
+		this.numberPicker.resize(fieldSize*0.7);
+	}
+	
+	this.registerEventListeners = function()
+	{
+		$(this.board).find('.field').on({
+			'click' : function(event){
+				event.data.board.numberPicker.detach();
+				event.data.board.numberPicker.attach(this);
+			}
+		}, {'board' : this});
 	}
 	
 	this.prepareBoard();
@@ -113,17 +127,6 @@ $(function(){
 	
 	$(window).resize(function(){
 		board.resize();
-	});
-	
-	$('body').on('click', function(){
-		if(board.numberPicker.isAttached())
-		{
-			board.numberPicker.detach();
-		}
-		else
-		{
-			board.numberPicker.attach('body');
-		}
 	});
 	
 });

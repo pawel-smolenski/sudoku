@@ -75,12 +75,27 @@ a img {
   border-style: solid;
   border-color: black;
   border-width: 1px;
+  position: relative;
 }
-/* line 36, sass/style.scss */
+/* line 37, sass/style.scss */
 .board .field:first-child {
   border-left-color: red;
 }
-/* line 41, sass/style.scss */
+/* line 42, sass/style.scss */
 .board .field:nth-child(3n) {
   border-right-color: red;
+}
+
+/* line 49, sass/style.scss */
+.number-picker {
+  border-collapse: collapse;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: whiteSmoke;
+}
+/* line 58, sass/style.scss */
+.number-picker .col .field {
+  border: 1px solid blue;
+  text-align: center;
 }

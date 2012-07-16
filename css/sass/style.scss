@@ -31,6 +31,7 @@
     border-color: black;
     border-width: 1px;
     
+    position: relative;
     
     &:first-child
     {
@@ -44,4 +45,19 @@
   }  
 }
 
-
+.number-picker
+{
+  border-collapse: collapse;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: whiteSmoke;
+  .col
+  {
+    .field
+    {
+      border: 1px solid blue;
+      text-align: center;
+    }    
+  }
+}
